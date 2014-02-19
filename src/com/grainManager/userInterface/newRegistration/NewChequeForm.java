@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -33,6 +34,8 @@ public class NewChequeForm extends JDialog {
 	JComboBox dealerComboBox, customerComboBox;
 	List<String> dealerList, customerList;
 
+	String[] keyString = { "Bank Name*", "Cheque Id*", "Cheque Amount*",
+			"Cheque Date*", "Discription" };
 	JTextField[] textField;
 
 	JButton saveButton, cancelButton;
@@ -137,8 +140,7 @@ public class NewChequeForm extends JDialog {
 	}
 
 	private void setBottomPanelContent() {
-		String[] keyString = { "Bank Name", "Cheque Id", "Cheque Amount",
-				"Cheque Date", "Discription" };
+
 		JLabel[] keyLabels;
 
 		bottomPanel.setLayout(new GridLayout(keyString.length + 1, 2));
@@ -182,7 +184,29 @@ public class NewChequeForm extends JDialog {
 	}
 
 	private void actionListner(ActionEvent event) {
+		JButton clickedButton = null;
+		JComboBox clickedComboBox = null;
 
+		if (event.getSource() instanceof JButton)
+			clickedButton = (JButton) event.getSource();
+		else
+			clickedComboBox = (JComboBox) event.getSource();
+
+		if (clickedButton != null) {
+			if (clickedButton.getText().equals("Save")) {
+				for (int iLoop = 0; iLoop < keyString.length - 1; iLoop++) {
+					if (textField[iLoop].getText().length() == 0) {
+						JOptionPane.showMessageDialog(this,
+								"Please Enter * Marked Fields");
+						return;
+					}
+				}
+			} else if (clickedButton.getText().equals("Cancel")) {
+
+			}
+		} else if (clickedComboBox != null) {
+
+		}
 	}
 
 	private boolean setDealerNameList() {
