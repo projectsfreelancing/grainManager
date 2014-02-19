@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import com.properties.ApplicationsConstants;
 import com.userInterface.newRegistration.NewCustomerRegistrationForm;
+import com.userInterface.newRegistration.NewDealerRegistrationForm;
 
 public class HomePageButtonPanel {
 
@@ -59,5 +60,7 @@ public class HomePageButtonPanel {
 			return;
 		if (clickedButton.getText().equals(homePageButtonText[0]))
 			new NewCustomerRegistrationForm();
+		else if (clickedButton.getText().equals(homePageButtonText[0]))
+			new NewDealerRegistrationForm();
 	}
 }

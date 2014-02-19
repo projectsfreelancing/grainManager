@@ -14,11 +14,7 @@ import javax.swing.SwingConstants;
 
 import com.properties.ApplicationsConstants;
 
-public class NewCustomerRegistrationForm extends JDialog {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class NewDealerRegistrationForm extends JDialog {
 
 	JPanel mainPanel;
 	JPanel contentMainPanel;
@@ -28,7 +24,7 @@ public class NewCustomerRegistrationForm extends JDialog {
 
 	JLabel welcomeLabel;
 
-	public NewCustomerRegistrationForm() {
+	public NewDealerRegistrationForm() {
 		initComponents();
 	}
 
@@ -40,7 +36,7 @@ public class NewCustomerRegistrationForm extends JDialog {
 		mainPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 10));
 
 		welcomeLabel = ApplicationsConstants._uiUtilReference.getJLabel();
-		welcomeLabel.setText("Welcome, Please Enter The New Customer Detail");
+		welcomeLabel.setText("Welcome, Please Enter The New Dealer Detail");
 
 		setContentPanelContent();
 
@@ -50,12 +46,13 @@ public class NewCustomerRegistrationForm extends JDialog {
 		add(mainPanel);
 		setTitle("Customer Registration");
 		pack();
-		setLocationRelativeTo(NewCustomerRegistrationForm.this);
+		setLocationRelativeTo(NewDealerRegistrationForm.this);
 		setVisible(true);
 	}
 
 	private void setContentPanelContent() {
-		String[] keyStrings = { "Name", "Village", "Mobile Number" };
+		String[] keyStrings = { "First Name", "Tin No.", "Contact No.",
+				"Proprieter", "Address" };
 		JLabel[] keyLabels;
 
 		saveButton = ApplicationsConstants._uiUtilReference.getJButton();
