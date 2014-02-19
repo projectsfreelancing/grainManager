@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -23,6 +24,7 @@ public class NewCustomerRegistrationForm extends JDialog {
 	JPanel mainPanel;
 	JPanel contentMainPanel;
 
+	String[] keyStrings = { "Name*", "Village*", "Mobile Number*" };
 	JTextField[] textField;
 	JButton saveButton, cancelButton;
 
@@ -55,7 +57,7 @@ public class NewCustomerRegistrationForm extends JDialog {
 	}
 
 	private void setContentPanelContent() {
-		String[] keyStrings = { "Name", "Village", "Mobile Number" };
+
 		JLabel[] keyLabels;
 
 		saveButton = ApplicationsConstants._uiUtilReference.getJButton();
@@ -71,6 +73,14 @@ public class NewCustomerRegistrationForm extends JDialog {
 
 		cancelButton = ApplicationsConstants._uiUtilReference.getJButton();
 		cancelButton.setText("Cancel");
+		cancelButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				actionListner(e);
+			}
+
+		});
 
 		contentMainPanel = ApplicationsConstants._uiUtilReference
 				.getJPanel(
@@ -106,7 +116,13 @@ public class NewCustomerRegistrationForm extends JDialog {
 			return;
 
 		if (clickedButton.getText().equals("Save")) {
-
+			for (int iLoop = 0; iLoop < keyStrings.length; iLoop++) {
+				if (textField[iLoop].getText().length() == 0) {
+					JOptionPane.showMessageDialog(this,
+							"Please Enter * Marked Fields");
+					return;
+				}
+			}
 		} else if (clickedButton.getText().equals("Cancel")) {
 			dispose();
 		}

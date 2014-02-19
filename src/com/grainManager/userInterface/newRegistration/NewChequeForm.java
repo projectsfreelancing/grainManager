@@ -189,8 +189,10 @@ public class NewChequeForm extends JDialog {
 
 		if (event.getSource() instanceof JButton)
 			clickedButton = (JButton) event.getSource();
-		else
+		else if (event.getSource() instanceof JComboBox)
 			clickedComboBox = (JComboBox) event.getSource();
+		else
+			return;
 
 		if (clickedButton != null) {
 			if (clickedButton.getText().equals("Save")) {
@@ -202,7 +204,7 @@ public class NewChequeForm extends JDialog {
 					}
 				}
 			} else if (clickedButton.getText().equals("Cancel")) {
-
+				dispose();
 			}
 		} else if (clickedComboBox != null) {
 
