@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
@@ -26,7 +27,7 @@ public class NewChequeForm extends JDialog {
 
 	JLabel welcomeLabel;
 
-	JComboBox selectDealerComboBox, selectCustomerComboBox;
+	JComboBox dealerComboBox, customerComboBox;
 	List<String> dealerList, customerList;
 
 	public NewChequeForm() {
@@ -54,11 +55,16 @@ public class NewChequeForm extends JDialog {
 
 		setTopPanelContent();
 		setBottomPanelContent();
+
+		mainPanel.add(welcomeLabel);
+		mainPanel.add(topPanel);
+		mainPanel.add(bottomPanel);
 	}
 
 	private void setTopPanelContent() {
 		JPanel leftPanel, rightPanel;
-		String[] KeyStrings = { "Select Dealer", "Select Customer" };
+		String[] KeyStrings = { "Select Dealer:", "Select Customer:" };
+		JLabel[] keyStringLabels;
 
 		topPanel.setLayout(new BorderLayout(20, 0));
 
@@ -74,32 +80,43 @@ public class NewChequeForm extends JDialog {
 						RegistrationUtil._NEW_CHEQUE_REGISTRATION_FORM_TOP_PANEL_HEIGHT);
 		rightPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 0));
 
-		selectDealerComboBox = ApplicationsConstants._uiUtilReference
-				.getJComboBox();
-		selectDealerComboBox.setModel(new DefaultComboBoxModel(dealerList
-				.toArray()));
-		selectDealerComboBox.setSelectedIndex(0);
-		selectDealerComboBox.setPreferredSize(new Dimension(120, 30));
-		selectDealerComboBox.addActionListener(new ActionListener() {
+		dealerComboBox = ApplicationsConstants._uiUtilReference.getJComboBox();
+		dealerComboBox.setModel(new DefaultComboBoxModel(dealerList.toArray()));
+		dealerComboBox.setSelectedIndex(0);
+		dealerComboBox.setPreferredSize(new Dimension(120, 30));
+		dealerComboBox.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				actionListner(e);
 			}
 		});
 
-		selectCustomerComboBox = ApplicationsConstants._uiUtilReference
+		customerComboBox = ApplicationsConstants._uiUtilReference
 				.getJComboBox();
-		selectCustomerComboBox.setModel(new DefaultComboBoxModel(customerList
+		customerComboBox.setModel(new DefaultComboBoxModel(customerList
 				.toArray()));
-		selectCustomerComboBox.setSelectedIndex(0);
-		selectCustomerComboBox.setPreferredSize(new Dimension(120, 100));
-		selectCustomerComboBox.addActionListener(new ActionListener() {
+		customerComboBox.setSelectedIndex(0);
+		customerComboBox.setPreferredSize(new Dimension(120, 100));
+		customerComboBox.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				actionListner(e);
 			}
 		});
 
+		keyStringLabels = new JLabel[KeyStrings.length];
+		for (int iLoop = 0; iLoop < KeyStrings.length; iLoop++) {
+			keyStringLabels[iLoop] = ApplicationsConstants._uiUtilReference
+					.getJLabel();
+			keyStringLabels[iLoop].setText(KeyStrings[iLoop]);
+			if (iLoop == 0) {
+				leftPanel.add(keyStringLabels[iLoop], BorderLayout.WEST);
+				leftPanel.add(dealerComboBox);
+			} else {
+				rightPanel.add(keyStringLabels[iLoop], BorderLayout.EAST);
+				rightPanel.add(customerComboBox);
+			}
+		}
 	}
 
 	private void actionListner(ActionEvent event) {
