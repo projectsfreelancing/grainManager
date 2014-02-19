@@ -7,6 +7,7 @@ import java.beans.Beans;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -73,6 +74,17 @@ public class UiUtil {
 			e.printStackTrace();
 		}
 		return textField;
+	}
+
+	public JComboBox getJComboBox() {
+		JComboBox comboBox = null;
+		try {
+			comboBox = (JComboBox) Beans.instantiate(getClass()
+					.getClassLoader(), JComboBox.class.getName());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return comboBox;
 	}
 
 	public static void getCustomButton(final JButton btn, final int width,
