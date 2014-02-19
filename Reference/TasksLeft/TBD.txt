@@ -1,0 +1,1 @@
+1. Store Home Page Reference in ApplicatioConstants as now JFrame reference is stored
