@@ -8,4 +8,7 @@ public class RegistrationUtil {
 	public static int _NEW_CUSTOMER_REGISTRATION_FORM_CONTENT_PANEL_WIDTH = 800;
 	public static int _NEW_CUSTOMER_REGISTRATION_FORM_CONTENT_PANEL_HEIGHT = 500;
 
+	public static int _NEW_CHEQUE_REGISTRATION_FORM_WIDTH = 800;
+	public static int _NEW_CHEQUE_REGISTRATION_FORM_HEIGHT = 700;
+
 }
