@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import com.grainManager.properties.ApplicationsConstants;
+import com.grainManager.userInterface.newRegistration.NewChequeForm;
 import com.grainManager.userInterface.newRegistration.NewCustomerRegistrationForm;
 import com.grainManager.userInterface.newRegistration.NewDealerRegistrationForm;
 
@@ -62,5 +63,9 @@ public class HomePageButtonPanel {
 			new NewCustomerRegistrationForm();
 		else if (clickedButton.getText().equals(homePageButtonText[1]))
 			new NewDealerRegistrationForm();
+		else if (clickedButton.getText().equals(homePageButtonText[2])) {
+
+		} else if (clickedButton.getText().equals(homePageButtonText[3]))
+			new NewChequeForm();
 	}
 }

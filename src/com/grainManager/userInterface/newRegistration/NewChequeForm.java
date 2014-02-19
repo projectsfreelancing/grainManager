@@ -3,16 +3,19 @@ package com.grainManager.userInterface.newRegistration;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import com.grainManager.properties.ApplicationsConstants;
 
@@ -29,6 +32,10 @@ public class NewChequeForm extends JDialog {
 
 	JComboBox dealerComboBox, customerComboBox;
 	List<String> dealerList, customerList;
+
+	JTextField[] textField;
+
+	JButton saveButton, cancelButton;
 
 	public NewChequeForm() {
 		initComponents();
@@ -59,6 +66,10 @@ public class NewChequeForm extends JDialog {
 		mainPanel.add(welcomeLabel);
 		mainPanel.add(topPanel);
 		mainPanel.add(bottomPanel);
+
+		add(mainPanel);
+		pack();
+		setVisible(true);
 	}
 
 	private void setTopPanelContent() {
@@ -80,6 +91,9 @@ public class NewChequeForm extends JDialog {
 						RegistrationUtil._NEW_CHEQUE_REGISTRATION_FORM_TOP_PANEL_HEIGHT);
 		rightPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 0));
 
+		setDealerNameList();
+		setCustomerNameList();
+
 		dealerComboBox = ApplicationsConstants._uiUtilReference.getJComboBox();
 		dealerComboBox.setModel(new DefaultComboBoxModel(dealerList.toArray()));
 		dealerComboBox.setSelectedIndex(0);
@@ -96,7 +110,7 @@ public class NewChequeForm extends JDialog {
 		customerComboBox.setModel(new DefaultComboBoxModel(customerList
 				.toArray()));
 		customerComboBox.setSelectedIndex(0);
-		customerComboBox.setPreferredSize(new Dimension(120, 100));
+		customerComboBox.setPreferredSize(new Dimension(120, 30));
 		customerComboBox.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -117,14 +131,77 @@ public class NewChequeForm extends JDialog {
 				rightPanel.add(customerComboBox);
 			}
 		}
+
+		// topPanel.add(leftPanel);
+		topPanel.add(rightPanel);
+	}
+
+	private void setBottomPanelContent() {
+		String[] keyString = { "Bank Name", "Cheque Id", "Cheque Amount",
+				"Cheque Date", "Discription" };
+		JLabel[] keyLabels;
+
+		bottomPanel.setLayout(new GridLayout(keyString.length + 1, 2));
+
+		keyLabels = new JLabel[keyString.length];
+		textField = new JTextField[keyString.length];
+		for (int iLoop = 0; iLoop < keyString.length; iLoop++) {
+			keyLabels[iLoop] = ApplicationsConstants._uiUtilReference
+					.getJLabel();
+			keyLabels[iLoop].setText(keyString[iLoop]);
+
+			textField[iLoop] = ApplicationsConstants._uiUtilReference
+					.getJTextField();
+
+			bottomPanel.add(keyLabels[iLoop]);
+			bottomPanel.add(textField[iLoop]);
+		}
+
+		saveButton = ApplicationsConstants._uiUtilReference.getJButton();
+		saveButton.setText("Save");
+		saveButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				actionListner(e);
+
+			}
+		});
+
+		cancelButton = ApplicationsConstants._uiUtilReference.getJButton();
+		cancelButton.setText("Cancel");
+		cancelButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				actionListner(e);
+			}
+		});
+
+		bottomPanel.add(saveButton);
+		bottomPanel.add(cancelButton);
 	}
 
 	private void actionListner(ActionEvent event) {
 
 	}
 
-	private void setBottomPanelContent() {
+	private boolean setDealerNameList() {
+		boolean isSuccess = false;
 
+		dealerList = new ArrayList<String>();
+		dealerList.add("Dealer 1");
+		dealerList.add("Dealer 2");
+
+		return isSuccess;
+	}
+
+	private boolean setCustomerNameList() {
+		boolean isSuccess = false;
+
+		customerList = new ArrayList<String>();
+		customerList.add("Customer 1");
+		customerList.add("Customer 2");
+		return isSuccess;
 	}
 
 	public static void main(String[] args) {
