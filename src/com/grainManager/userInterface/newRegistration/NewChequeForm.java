@@ -231,6 +231,6 @@ public class NewChequeForm extends JDialog {
 	}
 
 	public static void main(String[] args) {
-
+		new NewChequeForm();
 	}
 }

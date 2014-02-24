@@ -87,7 +87,7 @@ public class UiUtil {
 		return comboBox;
 	}
 
-	public static void getCustomButton(final JButton btn, final int width,
+	public void getCustomButton(final JButton btn, final int width,
 			final int height, final Color bgColor, final Color fgColor,
 			final Font font, final Border border) {
 		btn.setFocusPainted(false);
@@ -98,8 +98,8 @@ public class UiUtil {
 		btn.setFont(font);
 	}
 
-	public static void setButtonImageAndString(final JButton btn,
-			final String str, final ImageIcon icon, final java.awt.Color color) {
+	public void setButtonImageAndString(final JButton btn, final String str,
+			final ImageIcon icon, final java.awt.Color color) {
 		btn.setText(str);
 		btn.setIcon(icon);
 		btn.setBackground(color);
