@@ -20,9 +20,9 @@ public class HomePageButtonPanel {
 
 	JPanel mainPanel;
 
-	String[] homePageButtonText = { "NewCustomer", "NewDealer", "New Crop",
-			"NewBilling", "NewCheque", "NewPayment", "NewPurchase",
-			"MandiTaxReport", "V.A.T Report", "CurrentBalance" };
+	String[] homePageButtonText = { "New Customer", "New Dealer", "New Crop",
+			"New Billing", "New Cheque", "New Payment", "New Purchase",
+			"Mandi Tax Report", "V.A.T Report", "Current Balance" };
 
 	int homePageButtonWidth = 120;
 	int homePageButtonHeight = 35;
@@ -59,9 +59,6 @@ public class HomePageButtonPanel {
 					homePageButtonHeight, UiColor.BG_MAIN_MENU_BTN,
 					UiColor.COLOR_GRAY, UiFont.FONT_MAIN_MENU_BTN,
 					UiBorder.BORDER_RAISED_BEVEL);
-
-			// ApplicationsConstants._uiUtilReference.getCustomButton(homePageButton[iLoop],
-			// width, height, bgColor, fgColor, font, border)
 
 			mainPanel.add(homePageButton[iLoop]);
 		}

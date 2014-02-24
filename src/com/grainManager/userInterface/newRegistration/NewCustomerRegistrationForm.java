@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import com.grainManager.properties.ApplicationsConstants;
+import com.grainManager.userInterface.UiColor;
+import com.grainManager.userInterface.UiFont;
 
 public class NewCustomerRegistrationForm extends JDialog {
 	/**
@@ -62,6 +64,11 @@ public class NewCustomerRegistrationForm extends JDialog {
 
 		saveButton = ApplicationsConstants._uiUtilReference.getJButton();
 		saveButton.setText("Save");
+		ApplicationsConstants._uiUtilReference.getCustomButton(saveButton,
+				ApplicationsConstants._SAVE_CANCEL_BUTTON_WIDTH,
+				ApplicationsConstants._SAVE_CANCEL_BUTTON_HEIGHT,
+				UiColor.BG_MAIN_MENU_BTN, UiColor.COLOR_GRAY,
+				UiFont.FONT_MAIN_MENU_BTN, UiBorder.BORDER_RAISED_BEVEL);
 		saveButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -73,6 +80,11 @@ public class NewCustomerRegistrationForm extends JDialog {
 
 		cancelButton = ApplicationsConstants._uiUtilReference.getJButton();
 		cancelButton.setText("Cancel");
+		ApplicationsConstants._uiUtilReference.getCustomButton(cancelButton,
+				ApplicationsConstants._SAVE_CANCEL_BUTTON_WIDTH,
+				ApplicationsConstants._SAVE_CANCEL_BUTTON_HEIGHT,
+				UiColor.BG_MAIN_MENU_BTN, UiColor.COLOR_GRAY,
+				UiFont.FONT_MAIN_MENU_BTN, UiBorder.BORDER_RAISED_BEVEL);
 		cancelButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -87,7 +99,8 @@ public class NewCustomerRegistrationForm extends JDialog {
 						RegistrationUtil._NEW_CUSTOMER_REGISTRATION_FORM_CONTENT_PANEL_WIDTH,
 						RegistrationUtil._NEW_CUSTOMER_REGISTRATION_FORM_CONTENT_PANEL_HEIGHT);
 
-		contentMainPanel.setLayout(new GridLayout(keyStrings.length + 1, 2));
+		contentMainPanel.setLayout(new GridLayout(keyStrings.length + 1, 2, 10,
+				10));
 
 		textField = new JTextField[keyStrings.length];
 		keyLabels = new JLabel[keyStrings.length];
@@ -99,6 +112,7 @@ public class NewCustomerRegistrationForm extends JDialog {
 			keyLabels[iLoop] = ApplicationsConstants._uiUtilReference
 					.getJLabel();
 			keyLabels[iLoop].setText(keyStrings[iLoop]);
+			keyLabels[iLoop].setFont(UiFont.FONT_KEY_CAPTIONS_LABELS);
 			keyLabels[iLoop].setHorizontalAlignment(SwingConstants.RIGHT);
 
 			contentMainPanel.add(keyLabels[iLoop]);
