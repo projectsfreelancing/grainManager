@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import com.grainManager.properties.ApplicationsConstants;
 import com.grainManager.userInterface.UiColor;
 import com.grainManager.userInterface.UiFont;
-import com.grainManager.userInterface.newRegistration.NewChequeForm;
+import com.grainManager.userInterface.newRegistration.NewChequeRegistration;
 import com.grainManager.userInterface.newRegistration.NewCropRegistration;
 import com.grainManager.userInterface.newRegistration.NewCustomerRegistrationForm;
 import com.grainManager.userInterface.newRegistration.NewDealerRegistrationForm;
@@ -73,7 +73,6 @@ public class HomePageButtonPanel {
 			clickedButton = (JButton) event.getSource();
 		else
 			return;
-		System.out.println(clickedButton.getText());
 		if (clickedButton.getText().equals(homePageButtonText[0]))
 			new NewCustomerRegistrationForm();
 		else if (clickedButton.getText().equals(homePageButtonText[1]))
@@ -83,7 +82,7 @@ public class HomePageButtonPanel {
 		} else if (clickedButton.getText().equals(homePageButtonText[3])) {
 
 		} else if (clickedButton.getText().equals(homePageButtonText[4])) {
-			new NewChequeForm();
+			new NewChequeRegistration();
 		}
 	}
 }
