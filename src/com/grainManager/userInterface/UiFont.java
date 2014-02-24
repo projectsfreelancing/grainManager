@@ -10,5 +10,5 @@ public class UiFont {
 			HomePageButtonPanel.class.getName(), java.awt.Font.BOLD, 10);
 
 	public static final Font FONT_KEY_CAPTIONS_LABELS = new java.awt.Font(
-			NewChequeRegistration.class.getName(), java.awt.Font.BOLD, 20);
+			NewChequeRegistration.class.getName(), java.awt.Font.BOLD, 15);
 }

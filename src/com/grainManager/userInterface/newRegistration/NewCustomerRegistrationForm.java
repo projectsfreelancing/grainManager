@@ -41,7 +41,7 @@ public class NewCustomerRegistrationForm extends JDialog {
 				RegistrationUtil._NEW_CUSTOMER_REGISTRATION_FORM_WIDTH,
 				RegistrationUtil._NEW_CUSTOMER_REGISTRATION_FORM_HEIGHT);
 
-		mainPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 10));
+		mainPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 10));
 
 		welcomeLabel = ApplicationsConstants._uiUtilReference.getJLabel();
 		welcomeLabel.setText("Welcome, Please Enter The New Customer Detail");
@@ -59,7 +59,6 @@ public class NewCustomerRegistrationForm extends JDialog {
 	}
 
 	private void setContentPanelContent() {
-
 		JLabel[] keyLabels;
 
 		saveButton = ApplicationsConstants._uiUtilReference.getJButton();
@@ -107,7 +106,7 @@ public class NewCustomerRegistrationForm extends JDialog {
 		for (int iLoop = 0; iLoop < keyStrings.length; iLoop++) {
 			textField[iLoop] = ApplicationsConstants._uiUtilReference
 					.getJTextField();
-			textField[iLoop].setHorizontalAlignment(SwingConstants.CENTER);
+			textField[iLoop].setHorizontalAlignment(SwingConstants.LEFT);
 
 			keyLabels[iLoop] = ApplicationsConstants._uiUtilReference
 					.getJLabel();
